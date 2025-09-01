@@ -9,6 +9,7 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Eye, EyeOff, Shield, Mail, Lock } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { useAdminAuth } from "@/hooks/useAdminAuth";
 
 export default function AdminAuth() {
   const [isLoading, setIsLoading] = useState(false);
@@ -24,6 +25,7 @@ export default function AdminAuth() {
   const navigate = useNavigate();
   const location = useLocation();
   const { toast } = useToast();
+  const { provisionAdminUser } = useAdminAuth();
 
   useEffect(() => {
     // Check if user is already authenticated and redirect
@@ -175,17 +177,33 @@ export default function AdminAuth() {
         email,
         password,
         options: {
-          emailRedirectTo: `${window.location.origin}/@admin/login`,
+          emailRedirectTo: `${window.location.origin}/@admin/callback`,
         }
       });
 
       if (error) throw error;
 
       if (data.user && !data.user.email_confirmed_at) {
+        // Send admin confirmation email via edge function
+        await supabase.functions.invoke('send-admin-confirmation', {
+          body: {
+            email,
+            confirmationUrl: `${window.location.origin}/@admin/login`
+          }
+        });
+
         toast({
           title: "Check your email",
           description: "We've sent you a confirmation link to complete your admin registration.",
         });
+      } else if (data.user?.email_confirmed_at) {
+        // User is confirmed, provision admin access
+        await provisionAdminUser(data.user.id);
+        toast({
+          title: "Admin account created",
+          description: "Your admin account has been created successfully!",
+        });
+        navigate('/admin/dashboard');
       }
 
       setActiveTab('login');
@@ -206,7 +224,7 @@ export default function AdminAuth() {
 
     try {
       const { error } = await supabase.auth.resetPasswordForEmail(resetEmail, {
-        redirectTo: `${window.location.origin}/@admin/login`,
+        redirectTo: `${window.location.origin}/@admin/callback`,
       });
 
       if (error) throw error;

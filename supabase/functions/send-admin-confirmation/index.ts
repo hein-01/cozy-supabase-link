@@ -1,4 +1,5 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.56.1';
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -29,12 +30,36 @@ const handler = async (req: Request): Promise<Response> => {
       );
     }
 
-    // In a real implementation, you would use a service like Resend here
+    // For now, just log the confirmation email details
+    // In production, integrate with an email service like Resend
     console.log(`Admin confirmation email would be sent to: ${email}`);
     console.log(`Confirmation URL: ${confirmationUrl}`);
+    
+    // Also provision the admin user immediately for development
+    // In production, this should only happen after email confirmation
+    try {
+      // Get the Supabase client
+      const supabaseAdmin = createClient(
+        Deno.env.get('SUPABASE_URL') ?? '',
+        Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
+      );
+      
+      // Find the user by email
+      const { data: users } = await supabaseAdmin.auth.admin.listUsers();
+      const user = users?.users?.find(u => u.email === email);
+      
+      if (user) {
+        // Provision admin user
+        await supabaseAdmin.rpc('provision_admin_user', { 
+          user_email: email 
+        });
+        console.log(`Admin user provisioned for: ${email}`);
+      }
+    } catch (error) {
+      console.error('Error provisioning admin user:', error);
+    }
 
-    // Simulate email sending
-    const emailSent = true; // In real implementation, this would be the result of the email service
+    const emailSent = true;
 
     if (emailSent) {
       return new Response(

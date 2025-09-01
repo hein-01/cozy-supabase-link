@@ -13,6 +13,7 @@ import ListBusiness from "./pages/ListBusiness";
 import Auth from "./pages/Auth";
 import AuthCallback from "./pages/AuthCallback";
 import AdminAuth from "./pages/admin/AdminAuth";
+import AdminAuthCallback from "./pages/admin/AdminAuthCallback";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import ProtectedAdminRoute from "./components/admin/ProtectedAdminRoute";
 import ListAndGetPOS from "./pages/ListAndGetPOS";
@@ -37,6 +38,7 @@ const App = () => (
           <Route path="/auth/callback" element={<AuthCallback />} />
           <Route path="/@admin/login" element={<AdminAuth />} />
           <Route path="/@admin/signup" element={<AdminAuth />} />
+          <Route path="/@admin/callback" element={<AdminAuthCallback />} />
           <Route path="/admin/dashboard" element={
             <ProtectedAdminRoute>
               <AdminDashboard />

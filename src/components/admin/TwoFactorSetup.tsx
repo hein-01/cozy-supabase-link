@@ -9,8 +9,8 @@ import { useAdminAuth } from "@/hooks/useAdminAuth";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 
-const speakeasy = require('speakeasy');
-const QRCode = require('qrcode');
+import * as speakeasy from 'speakeasy';
+import * as QRCode from 'qrcode';
 
 export default function TwoFactorSetup() {
   const { adminProfile, updateAdminProfile } = useAdminAuth();
