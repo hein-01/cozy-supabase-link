@@ -9,8 +9,16 @@ import { useAdminAuth } from "@/hooks/useAdminAuth";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 
-import * as speakeasy from 'speakeasy';
-import * as QRCode from 'qrcode';
+// Import speakeasy and qrcode only when needed to avoid SSR issues
+let speakeasy: any;
+let QRCode: any;
+
+const loadDependencies = async () => {
+  if (typeof window !== 'undefined') {
+    speakeasy = await import('speakeasy');
+    QRCode = await import('qrcode');
+  }
+};
 
 export default function TwoFactorSetup() {
   const { adminProfile, updateAdminProfile } = useAdminAuth();
@@ -31,6 +39,9 @@ export default function TwoFactorSetup() {
   const generateSecret = async () => {
     try {
       setLoading(true);
+      
+      // Load dependencies dynamically
+      await loadDependencies();
       
       // Generate secret
       const newSecret = speakeasy.generateSecret({

@@ -12,14 +12,16 @@ import { Autoplay, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/autoplay';
 import 'swiper/css/navigation';
-import heroBg1 from "@/assets/hero-bg-1.jpg";
-import heroBg2 from "@/assets/hero-bg-2.jpg";
-import heroBg3 from "@/assets/hero-bg-3.jpg";
-import heroBgMobile1 from "@/assets/hero-bg-mobile-1.jpg";
-import heroBgMobile2 from "@/assets/hero-bg-mobile-2.jpg";
-import heroBgMobile3 from "@/assets/hero-bg-mobile-3.jpg";
+// Import hero background images with error handling
+const heroBg1 = "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&h=350&fit=crop";
+const heroBg2 = "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200&h=350&fit=crop";
+const heroBg3 = "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?w=1200&h=350&fit=crop";
+const heroBgMobile1 = "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=350&fit=crop";
+const heroBgMobile2 = "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&h=350&fit=crop";
+const heroBgMobile3 = "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?w=800&h=350&fit=crop";
 
 const Index = () => {
+  console.log('Index component is rendering...'); // Debug log
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("product");
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
@@ -41,6 +43,8 @@ const Index = () => {
     return () => clearInterval(interval);
   }, []);
 
+  console.log('Index component returning JSX...'); // Debug log
+  
   return (
     <div className="min-h-screen bg-background pt-16">
       <Navbar />
