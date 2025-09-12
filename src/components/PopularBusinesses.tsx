@@ -112,11 +112,11 @@ const PopularBusinesses = () => {
             {/* Fixed sixth card - Discover more shops */}
             <SwiperSlide key="discover-more" className="!w-[260px] sm:!w-[280px]">
               <Card className="group w-[280px] h-[475px] flex flex-col shadow-lg hover:shadow-2xl transition-all duration-300 mx-auto bg-gradient-to-br from-slate-800 to-slate-900">
-                <div className="relative overflow-hidden rounded-t-lg h-[200px] bg-gradient-to-br from-slate-700 to-slate-800">
+                <div className="relative overflow-hidden rounded-t-lg h-[230px] bg-gradient-to-br from-slate-700 to-slate-800">
                   <img
                     src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=320&h=200&fit=crop"
                     alt="Discover more shops"
-                    className="w-full h-[200px] object-cover opacity-30"
+                    className="w-full h-[230px] object-cover opacity-30"
                   />
                 </div>
                 
@@ -169,11 +169,11 @@ const PopularBusinesses = () => {
               {/* Fixed sixth card - Discover more shops (Mobile) */}
               <SwiperSlide key="discover-more-mobile" className="!w-[280px] !mr-5">
                 <Card className="group w-[280px] h-[475px] flex flex-col shadow-lg hover:shadow-2xl transition-all duration-300 mx-auto bg-gradient-to-br from-slate-800 to-slate-900">
-                  <div className="relative overflow-hidden rounded-t-lg h-[200px] bg-gradient-to-br from-slate-700 to-slate-800">
+                  <div className="relative overflow-hidden rounded-t-lg h-[230px] bg-gradient-to-br from-slate-700 to-slate-800">
                     <img
                       src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=320&h=200&fit=crop"
                       alt="Discover more shops"
-                      className="w-full h-[200px] object-cover opacity-30"
+                      className="w-full h-[230px] object-cover opacity-30"
                     />
                   </div>
                   
