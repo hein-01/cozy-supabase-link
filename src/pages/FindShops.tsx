@@ -276,8 +276,8 @@ export default function FindShops() {
   };
 
   const BusinessSkeleton = () => (
-    <div className="w-[280px]">
-      <Skeleton className="h-[280px] w-full rounded-t-lg" />
+    <div className="w-[290px]">
+      <Skeleton className="h-[290px] w-full rounded-t-lg" />
       <div className="p-4 space-y-2">
         <Skeleton className="h-4 w-3/4" />
         <Skeleton className="h-3 w-full" />
@@ -316,7 +316,7 @@ export default function FindShops() {
         />
 
         <div className="mt-8">
-          <div className="flex flex-wrap justify-center gap-5 max-w-[580px] md:max-w-[580px] lg:max-w-[900px] mx-auto">
+          <div className="flex flex-wrap justify-center gap-5 max-w-[590px] md:max-w-[590px] lg:max-w-[915px] mx-auto">
             {loading ? (
               // Show skeletons while loading
               Array.from({ length: 6 }).map((_, index) => (
