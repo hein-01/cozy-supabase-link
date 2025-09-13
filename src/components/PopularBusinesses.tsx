@@ -111,7 +111,7 @@ const PopularBusinesses = () => {
             
             {/* Fixed sixth card - Discover more shops */}
             <SwiperSlide key="discover-more" className="!w-[260px] sm:!w-[290px]">
-              <Card className="group w-[290px] h-[475px] flex flex-col shadow-lg hover:shadow-2xl transition-all duration-300 mx-auto bg-gradient-to-br from-slate-800 to-slate-900">
+              <Card className="group w-[290px] h-[555px] flex flex-col shadow-lg hover:shadow-2xl transition-all duration-300 mx-auto bg-gradient-to-br from-slate-800 to-slate-900">
                 <div className="relative overflow-hidden rounded-t-lg h-[230px] bg-gradient-to-br from-slate-700 to-slate-800">
                   <img
                     src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=320&h=200&fit=crop"
@@ -168,7 +168,7 @@ const PopularBusinesses = () => {
               
               {/* Fixed sixth card - Discover more shops (Mobile) */}
               <SwiperSlide key="discover-more-mobile" className="!w-[290px] !mr-5">
-                <Card className="group w-[290px] h-[475px] flex flex-col shadow-lg hover:shadow-2xl transition-all duration-300 mx-auto bg-gradient-to-br from-slate-800 to-slate-900">
+                <Card className="group w-[290px] h-[555px] flex flex-col shadow-lg hover:shadow-2xl transition-all duration-300 mx-auto bg-gradient-to-br from-slate-800 to-slate-900">
                   <div className="relative overflow-hidden rounded-t-lg h-[230px] bg-gradient-to-br from-slate-700 to-slate-800">
                     <img
                       src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=320&h=200&fit=crop"
