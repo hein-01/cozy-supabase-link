@@ -609,9 +609,9 @@ export const PopularBusinessCard = ({ business }: PopularBusinessCardProps) => {
             {business.phone && (
               <img 
                 src={phoneIcon}
-                alt="WhatsApp"
+                alt="Call"
                 className="w-6 h-6 rounded-lg cursor-pointer hover:opacity-80 transition-opacity"
-                onClick={() => window.open(`https://wa.me/${business.phone.replace(/[^\d]/g, '')}`, '_blank')}
+                onClick={() => window.open(`tel:${business.phone}`, '_self')}
               />
             )}
           </div>
