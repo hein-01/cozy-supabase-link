@@ -525,10 +525,10 @@ export const PopularBusinessCard = ({ business }: PopularBusinessCardProps) => {
             </div>
           </div>
           
-          {business.towns && business.province_district && (
+          {(business.towns || business.province_district) && (
             <p className="text-xs text-muted-foreground flex items-center gap-1">
               <MapPin className="w-3 h-3 text-gray-500" />
-              {business.towns}, {business.province_district}
+              {[business.towns, business.province_district].filter(Boolean).join(', ')}
             </p>
           )}
           
